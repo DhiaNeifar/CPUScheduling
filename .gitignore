@@ -1,3 +1,5 @@
 # Files to be ignored
 
+__pycache__/
+
 test.py
