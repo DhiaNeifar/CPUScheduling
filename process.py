@@ -3,10 +3,10 @@ import numpy as np
 
 
 class Process(object):
-    def __init__(self, LambdaArrival, MeanBurst):
+    def __init__(self, LambdaArrival, MeanBurst, Sigma):
         self.PID = np.random.randint(0, 65335)
         self.ArrivalTime = np.random.poisson(LambdaArrival)
-        self.BurstTime = np.maximum(np.round(np.random.exponential(MeanBurst)), MinimumBurstTime).astype(int)
+        self.BurstTime = np.maximum(np.round(np.random.normal(MeanBurst, Sigma)), MinimumBurstTime).astype(int)
         self.Priority = np.random.randint(MinimumPriorityLevel, MaximumPriorityLevel)
         self.ExecutionTime = None
         self.CompletionTime = None
@@ -27,3 +27,10 @@ class Process(object):
         self.CompletionTime = CompletionTime
         self.TurnAroundTime = TurnAroundTime
         self.WaitingTime = WaitingTime
+
+    @staticmethod
+    def GenerateProcesses(NumberProcesses, LambdaArrival, MeanBurst, Sigma):
+        processes = [Process(LambdaArrival, MeanBurst, Sigma) for _ in range(NumberProcesses)]
+        for i in range(NumberProcesses - 1):
+            processes[i + 1].AdjustArrivalTime(processes[i])
+        return processes

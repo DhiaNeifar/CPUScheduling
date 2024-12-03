@@ -3,11 +3,10 @@ from copy import deepcopy
 from schedulers.scheduler import Scheduler
 
 
-class Priority(Scheduler):
-    def __init__(self, Queue):
-        super().__init__(Queue)
+class NonPreemptivePriority(Scheduler):
+    def __init__(self, Queue, name='Non Preemptive Priority'):
+        super().__init__(Queue, name)
         self.ready_queue = []
-
 
     def schedule(self):
         ExecutionStart = 0

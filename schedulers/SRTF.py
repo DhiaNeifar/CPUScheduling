@@ -3,8 +3,8 @@ from schedulers.scheduler import Scheduler
 
 
 class ShortestRemainingTimeFirst(Scheduler):
-    def __init__(self, Queue):
-        super().__init__(Queue)
+    def __init__(self, Queue, name='Shortest Remaining Time First'):
+        super().__init__(Queue, name)
         self.ready_queue = []
 
     def schedule(self):

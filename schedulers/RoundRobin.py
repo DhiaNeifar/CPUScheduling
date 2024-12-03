@@ -3,8 +3,8 @@ from schedulers.scheduler import Scheduler
 
 
 class RoundRobin(Scheduler):
-    def __init__(self, Queue, TimeQuantum):
-        super().__init__(Queue)
+    def __init__(self, Queue, TimeQuantum, name='Round Robin'):
+        super().__init__(Queue, name)
         self.TimeQuantum = TimeQuantum
         self.ready_queue = []
 

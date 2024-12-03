@@ -1,9 +1,9 @@
 from schedulers.scheduler import Scheduler
 
 
-class FCFS(Scheduler):
-    def __init__(self, Queue):
-        super().__init__(Queue)
+class FirstComeFirstServe(Scheduler):
+    def __init__(self, Queue, name='First Come First Serve'):
+        super().__init__(Queue, name)
 
     def SortQueue(self):
         pass

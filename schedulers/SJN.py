@@ -4,8 +4,8 @@ from schedulers.scheduler import Scheduler
 
 
 class SJN(Scheduler):
-    def __init__(self, Queue):
-        super().__init__(Queue)
+    def __init__(self, Queue, name='Shortest Job Next'):
+        super().__init__(Queue, name)
         self.ready_queue = []
 
     def schedule(self):
