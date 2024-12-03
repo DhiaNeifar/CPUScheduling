@@ -8,6 +8,7 @@ class Priority(Scheduler):
         super().__init__(Queue)
         self.ready_queue = []
 
+
     def schedule(self):
         ExecutionStart = 0
         _queue = deepcopy(self.Queue)
@@ -29,4 +30,4 @@ class Priority(Scheduler):
                     TurnAroundTime = CompletionTime - _process.ArrivalTime
                     _process.ComputeMetrics(ExecutionStart, WaitingTime, CompletionTime, TurnAroundTime)
             ExecutionStart += process.BurstTime
-        self.Queue.sort(key=lambda proc: proc.ExecutionTime)
+        # self.Queue.sort(key=lambda proc: proc.ExecutionTime)

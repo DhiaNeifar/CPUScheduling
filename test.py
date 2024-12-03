@@ -17,15 +17,16 @@ def main():
     NumberProcesses, LambdaArrival, MeanBurst = 10, 3, 5
     Arrivals = [4, 5, 8, 11, 13, 16, 18, 21, 21, 23]
     Burst = [15, 17, 8, 2, 1, 6, 3, 1, 3, 1]
+    Priorities = [9, 2, 1, 3, 4, 5, 8, 6, 7, 8]
     TimeQuantum = 2
-    Priorities = np.random.randint(1, 10, size=NumberProcesses)
+    # Priorities = np.random.randint(1, 10, size=NumberProcesses)
     processes = GenerateProcesses(NumberProcesses, LambdaArrival, MeanBurst)
     for index, process in enumerate(processes):
         process.ArrivalTime = Arrivals[index]
         process.BurstTime = Burst[index]
         process.Priority = Priorities[index]
 
-    Scheduler = RoundRobin(processes, 2)
+    Scheduler = ShortestRemainingTimeFirst(processes)
     Scheduler.schedule()
     for index, process in enumerate(processes):
         print(process)

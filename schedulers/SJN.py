@@ -29,4 +29,4 @@ class SJN(Scheduler):
                     TurnAroundTime = CompletionTime - _process.ArrivalTime
                     _process.ComputeMetrics(ExecutionStart, WaitingTime, CompletionTime, TurnAroundTime)
             ExecutionStart += process.BurstTime
-        self.Queue.sort(key=lambda proc: proc.ExecutionTime)
+        # self.Queue.sort(key=lambda proc: proc.ExecutionTime)

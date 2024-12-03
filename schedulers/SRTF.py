@@ -11,26 +11,19 @@ class ShortestRemainingTimeFirst(Scheduler):
         ExecutionStart = 0
         _queue = deepcopy(self.Queue)
         self.ready_queue = []
-
         while _queue or self.ready_queue:
             while _queue and _queue[0].ArrivalTime <= ExecutionStart:
                 process = _queue.pop(0)
                 self.ready_queue.append(process)
-
             if not self.ready_queue:
                 if _queue:
                     ExecutionStart = _queue[0].ArrivalTime
                 continue
-
             self.ready_queue.sort(key=lambda proc: proc.BurstTime)
             process = self.ready_queue.pop(0)
-
-            # Assign ExecutionTime only the first time the process starts
-            if process.ExecutionTime is None:  # Check if it's uninitialized
+            if process.ExecutionTime is None:
                 process.ExecutionTime = ExecutionStart
-
             next_arrival_time = _queue[0].ArrivalTime if _queue else float('inf')
-
             if process.BurstTime + ExecutionStart <= next_arrival_time:
                 ExecutionStart += process.BurstTime
                 process.BurstTime = 0
@@ -47,4 +40,4 @@ class ShortestRemainingTimeFirst(Scheduler):
                 ExecutionStart += time_slice
                 self.ready_queue.append(process)
 
-        self.Queue.sort(key=lambda proc: proc.ExecutionTime)
+        # self.Queue.sort(key=lambda proc: proc.ExecutionTime)
