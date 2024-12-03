@@ -42,5 +42,3 @@ class HighestResponseRatioNext(Scheduler):
                     break
 
             ExecutionStart = CompletionTime
-
-        self.Queue.sort(key=lambda proc: proc.ExecutionTime)

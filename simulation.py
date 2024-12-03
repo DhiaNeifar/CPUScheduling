@@ -12,7 +12,7 @@ from schedulers.HRRN import HighestResponseRatioNext
 
 def main():
     NumberSimulations = 100
-    NumberProcesses = [5, 10, 20, 50] + list(range(100, 1100, 100))
+    NumberProcesses = [5, 10, 20, 50] # + list(range(100, 1100, 100))
     Lambdas = [1, 5, 10, 20]
     MeanBurst = 10
     Sigma = 7
@@ -46,7 +46,8 @@ def Simulation(NumberProcess, Lambda, MeanBurst, Sigma):
     ]
     for scheduler in Schedulers:
         scheduler.schedule()
-
+        scheduler.ComputeMetrics()
+        print(scheduler)
 
 
 

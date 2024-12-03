@@ -39,5 +39,3 @@ class ShortestRemainingTimeFirst(Scheduler):
                 process.BurstTime -= time_slice
                 ExecutionStart += time_slice
                 self.ready_queue.append(process)
-
-        # self.Queue.sort(key=lambda proc: proc.ExecutionTime)

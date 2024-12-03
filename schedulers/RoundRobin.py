@@ -39,4 +39,3 @@ class RoundRobin(Scheduler):
                         TurnAroundTime = CompletionTime - _process.ArrivalTime
                         _process.ComputeMetrics(process.ExecutionTime, WaitingTime, CompletionTime, TurnAroundTime)
                     break
-        self.Queue.sort(key=lambda proc: proc.ExecutionTime)

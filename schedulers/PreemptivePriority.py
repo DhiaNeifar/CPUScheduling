@@ -41,4 +41,3 @@ class PreemptivePriority(Scheduler):
             else:
                 if _queue:
                     ExecutionStart = _queue[0].ArrivalTime
-        self.Queue.sort(key=lambda proc: proc.ExecutionTime)
