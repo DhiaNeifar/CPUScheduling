@@ -15,7 +15,7 @@ class Process(object):
 
 
     def __repr__(self):
-        return f'PID = {self.PID}, Arrival = {self.ArrivalTime}, Burst = {self.BurstTime}, Execution = {self.ExecutionTime}, Completion = {self.CompletionTime}, Turnaround = {self.TurnAroundTime}, Waiting = {self.WaitingTime}'
+        return f'PID = {self.PID}, Arrival = {self.ArrivalTime}, Burst = {self.BurstTime}, Priority = {self.Priority}, Execution = {self.ExecutionTime}, Completion = {self.CompletionTime}, Turnaround = {self.TurnAroundTime}, Waiting = {self.WaitingTime}'
         # f'Arrival = {self.ArrivalTime}, Burst = {self.BurstTime}, Execution = {self.ExecutionTime}'
 
     def AdjustArrivalTime(self, OtherProcess):
