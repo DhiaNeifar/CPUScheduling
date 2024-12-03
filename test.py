@@ -7,6 +7,7 @@ from schedulers.Priority import Priority
 from schedulers.RoundRobin import RoundRobin
 from schedulers.SRTF import ShortestRemainingTimeFirst
 from schedulers.LRBT import LongestRemainingBurstTime
+from schedulers.HRRN import HighestResponseRatioNext
 
 
 from utils import GenerateProcesses
@@ -24,7 +25,7 @@ def main():
         process.BurstTime = Burst[index]
         process.Priority = Priorities[index]
 
-    Scheduler = LongestRemainingBurstTime(processes)
+    Scheduler = RoundRobin(processes, 2)
     Scheduler.schedule()
     for index, process in enumerate(processes):
         print(process)

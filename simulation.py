@@ -271,7 +271,7 @@ mean_burst = 5  # Mean burst time
 processes = generate_processes(num_processes, lambda_arrival, mean_burst)
 
 # Run HRRN Scheduler
-hrrn_results = srtf_scheduler(processes)
+hrrn_results = hrrn_scheduler(processes)
 
 # Display Results
 print("Generated Processes:")
