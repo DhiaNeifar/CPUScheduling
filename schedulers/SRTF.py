@@ -32,7 +32,7 @@ class ShortestRemainingTimeFirst(Scheduler):
                     if _process.PID == process.PID:
                         WaitingTime = CompletionTime - _process.ArrivalTime - _process.BurstTime
                         TurnAroundTime = CompletionTime - _process.ArrivalTime
-                        _process.ComputeMetrics(process.ExecutionTime, WaitingTime, CompletionTime, TurnAroundTime)
+                        _process.ComputeProcessMetrics(process.ExecutionTime, WaitingTime, CompletionTime, TurnAroundTime)
                         break
             else:
                 time_slice = next_arrival_time - ExecutionStart

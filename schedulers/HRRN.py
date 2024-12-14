@@ -38,7 +38,7 @@ class HighestResponseRatioNext(Scheduler):
 
             for _process in self.Queue:
                 if _process.PID == process.PID:
-                    _process.ComputeMetrics(process.ExecutionTime, WaitingTime, CompletionTime, TurnAroundTime)
+                    _process.ComputeProcessMetrics(process.ExecutionTime, WaitingTime, CompletionTime, TurnAroundTime)
                     break
 
             ExecutionStart = CompletionTime

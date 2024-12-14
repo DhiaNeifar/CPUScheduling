@@ -35,7 +35,7 @@ class PreemptivePriority(Scheduler):
                         if _process.PID == current_process.PID:
                             WaitingTime = CompletionTime - _process.ArrivalTime - _process.BurstTime
                             TurnAroundTime = CompletionTime - _process.ArrivalTime
-                            _process.ComputeMetrics(current_process.ExecutionTime, WaitingTime, CompletionTime, TurnAroundTime)
+                            _process.ComputeProcessMetrics(current_process.ExecutionTime, WaitingTime, CompletionTime, TurnAroundTime)
                             break
                     current_process = None
             else:

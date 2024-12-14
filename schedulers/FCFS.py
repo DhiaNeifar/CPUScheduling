@@ -16,6 +16,6 @@ class FirstComeFirstServe(Scheduler):
             WaitingTime = ExecutionStart - process.ArrivalTime
             CompletionTime = ExecutionStart + process.BurstTime
             TurnAroundTime = CompletionTime - process.ArrivalTime
-            process.ComputeMetrics(ExecutionStart, WaitingTime, CompletionTime, TurnAroundTime)
+            process.ComputeProcessMetrics(ExecutionStart, WaitingTime, CompletionTime, TurnAroundTime)
             ExecutionStart = CompletionTime
         pass

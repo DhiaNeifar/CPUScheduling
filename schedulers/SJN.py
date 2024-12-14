@@ -27,5 +27,5 @@ class SJN(Scheduler):
                     WaitingTime = ExecutionStart - _process.ArrivalTime
                     CompletionTime = ExecutionStart + _process.BurstTime
                     TurnAroundTime = CompletionTime - _process.ArrivalTime
-                    _process.ComputeMetrics(ExecutionStart, WaitingTime, CompletionTime, TurnAroundTime)
+                    _process.ComputeProcessMetrics(ExecutionStart, WaitingTime, CompletionTime, TurnAroundTime)
             ExecutionStart += process.BurstTime

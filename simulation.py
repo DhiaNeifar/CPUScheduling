@@ -1,3 +1,4 @@
+from utils import InitDisplay, SaveData
 from process import Process
 from schedulers.FCFS import FirstComeFirstServe
 from schedulers.SJN import SJN
@@ -11,11 +12,11 @@ from schedulers.HRRN import HighestResponseRatioNext
 
 
 def main():
+    InitDisplay()
     NumberSimulations = 100
-    NumberProcesses = [5, 10, 20, 50] # + list(range(100, 1100, 100))
+    NumberProcesses = [5, 10, 20, 50] + list(range(100, 1100, 100))
     Lambdas = [1, 5, 10, 20]
-    MeanBurst = 10
-    Sigma = 7
+    MeanBurst, Sigma = 10, 7
     for NumberProcess in NumberProcesses:
         for Lambda in Lambdas:
             print('\n' + '#' * 60 + '\n')
@@ -24,7 +25,8 @@ def main():
             while simulation < NumberSimulations:
                 print('-' * 60)
                 print(f'Simulation {simulation + 1} out of {NumberSimulations}')
-                Simulation(NumberProcess, Lambda, MeanBurst, Sigma)
+                data = Simulation(NumberProcess, Lambda, MeanBurst, Sigma)
+                SaveData(simulation + 1, NumberProcess, Lambda, data)
                 simulation += 1
             print('-' * 60)
 
@@ -44,11 +46,12 @@ def Simulation(NumberProcess, Lambda, MeanBurst, Sigma):
         LongestRemainingBurstTime(processes),
         HighestResponseRatioNext(processes)
     ]
+    data = {}
     for scheduler in Schedulers:
         scheduler.schedule()
-        scheduler.ComputeMetrics()
-        print(scheduler)
-
+        SchedulerMetrics = scheduler.ComputeSchedulerMetrics()
+        data[scheduler.name] = SchedulerMetrics
+    return data
 
 
 if __name__ == '__main__':

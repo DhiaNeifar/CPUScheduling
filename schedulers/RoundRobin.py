@@ -4,7 +4,8 @@ from schedulers.scheduler import Scheduler
 
 class RoundRobin(Scheduler):
     def __init__(self, Queue, TimeQuantum, name='Round Robin'):
-        super().__init__(Queue, name)
+        name_ = f"{name} ({TimeQuantum}s)"
+        super().__init__(Queue, name_)
         self.TimeQuantum = TimeQuantum
         self.ready_queue = []
 
@@ -37,5 +38,5 @@ class RoundRobin(Scheduler):
                         CompletionTime = ExecutionStart
                         WaitingTime = CompletionTime - _process.ArrivalTime - _process.BurstTime
                         TurnAroundTime = CompletionTime - _process.ArrivalTime
-                        _process.ComputeMetrics(process.ExecutionTime, WaitingTime, CompletionTime, TurnAroundTime)
+                        _process.ComputeProcessMetrics(process.ExecutionTime, WaitingTime, CompletionTime, TurnAroundTime)
                     break

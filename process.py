@@ -22,7 +22,7 @@ class Process(object):
         assert isinstance(OtherProcess, Process)
         self.ArrivalTime += OtherProcess.ArrivalTime
 
-    def ComputeMetrics(self, ExecutionStart, WaitingTime, CompletionTime, TurnAroundTime):
+    def ComputeProcessMetrics(self, ExecutionStart, WaitingTime, CompletionTime, TurnAroundTime):
         self.ExecutionTime = ExecutionStart
         self.CompletionTime = CompletionTime
         self.TurnAroundTime = TurnAroundTime
