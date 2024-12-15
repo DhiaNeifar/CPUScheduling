@@ -1,5 +1,6 @@
-from utils import InitDisplay, SaveData
+from utils import InitDisplay, SaveData, GetDataPerLambda
 from process import Process
+from Visualization import VisualizeFixedLambda
 from schedulers.FCFS import FirstComeFirstServe
 from schedulers.SJN import SJN
 from schedulers.LJF import LJF
@@ -13,8 +14,8 @@ from schedulers.HRRN import HighestResponseRatioNext
 
 def main():
     InitDisplay()
-    NumberSimulations = 100
-    NumberProcesses = [5, 10, 20, 50] + list(range(100, 1100, 100))
+    NumberSimulations = 10
+    NumberProcesses = [5, 10, 20, 50] + list(range(100, 1100, 100))   #
     Lambdas = [1, 5, 10, 20]
     MeanBurst, Sigma = 10, 7
     for NumberProcess in NumberProcesses:
@@ -29,6 +30,10 @@ def main():
                 SaveData(simulation + 1, NumberProcess, Lambda, data)
                 simulation += 1
             print('-' * 60)
+
+    for lambda_ in Lambdas:
+        data, Schedulers = GetDataPerLambda(NumberSimulations, NumberProcesses, lambda_)
+        VisualizeFixedLambda(data, NumberProcesses, Schedulers, lambda_)
 
 
 def Simulation(NumberProcess, Lambda, MeanBurst, Sigma):
